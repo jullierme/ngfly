@@ -1,0 +1,26 @@
+{
+  "name": "ngfly",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jullierme/ngfly"
+  },
+  "author": {
+    "name": "Jullierme Barros",
+    "email": "julliermegyn@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jullierme/ngfly/issues"
+  },
+  "module": "ngfly.js",
+  "typings": "ngfly.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
