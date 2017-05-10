@@ -1,0 +1,14 @@
+.fly-hr {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.fly-hr-colorgraph {
+  height: 1px;
+  border-top: 0;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #62c2e4 87.5%, #62c2e4, #2567e1 75%, #2567e1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #62c2e4 87.5%, #62c2e4, #2567e1 75%, #2567e1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #62c2e4 87.5%, #62c2e4, #2567e1 75%, #2567e1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #62c2e4 87.5%, #62c2e4, #2567e1 75%, #2567e1 87.5%, #62c2e4 87.5%, #62c2e4);
+}

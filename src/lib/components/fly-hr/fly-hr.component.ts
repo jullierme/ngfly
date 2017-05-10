@@ -3,13 +3,13 @@ import {FlyUtilService} from '../../services/fly-util.service';
 import {FlyColspanInterface} from '../fly-colspan.interface';
 
 @Component({
-    selector: 'fly-legend',
-    templateUrl: './fly-legend.component.html',
-    styleUrls: ['./fly-legend.component.css'],
+    selector: 'fly-hr',
+    templateUrl: './fly-hr.component.html',
+    styleUrls: ['./fly-hr.component.css'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FlyLegendComponent implements OnInit, FlyColspanInterface {
+export class FlyHrComponent implements OnInit, FlyColspanInterface {
 
     @Input() title: string;
     @Input() iconClass: string;
