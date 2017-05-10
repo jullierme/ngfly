@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FlyColspanInterface} from '../fly-colspan.interface';
 
 @Component({
     selector: 'fly-input-text',
@@ -6,7 +7,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
     styleUrls: ['./fly-input-text.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class FlyInputTextComponent implements OnInit {
+export class FlyInputTextComponent implements OnInit, FlyColspanInterface {
 
     constructor() {
     }
@@ -14,4 +15,7 @@ export class FlyInputTextComponent implements OnInit {
     ngOnInit() {
     }
 
+    defineClassColspan() {
+        /*nothing yet*/
+    }
 }
