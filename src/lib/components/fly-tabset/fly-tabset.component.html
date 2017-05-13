@@ -1,0 +1,24 @@
+<div class="fly-tabset"
+     [ngClass]="[classColor, classColspan]">
+    <ul class="nav"
+        [ngClass]="{'nav-tabs': type != 'pills', 'nav-pills': type == 'pills', 'nav-stacked':vertical, 'nav-justified':justified}">
+        <li *ngFor="let tab of tabs"
+            (click)="selectTab(tab)"
+            [class.active]="tab.active"
+            [class.disabled]="tab.disabled == 'true'">
+            <a class="fly-tabset-label">
+                <i [class]="tab.iconClass"
+                   *ngIf="tab.iconClass"
+                   style="margin-right: 6px;"></i>
+                {{tab.heading}}
+                <i class="fa fa-asterisk fly-tabset-label-required"
+                   *ngIf="tab.required"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+_selectedIndex {{selectedIndex}}
+<div class="fly-tabset-content">
+    <ng-content></ng-content>
+</div>

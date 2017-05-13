@@ -22,4 +22,20 @@ export class FlyUtilService {
 
         return 'col-md-' + value;
     }
+
+    isTrue(value: any): boolean {
+        if (!value) {
+            return false;
+        }
+
+        return value.toString().toLowerCase() === 'true';
+    }
+
+    isFalse(value: any): boolean {
+        if (!value && value !== false) {
+            return false;
+        }
+
+        return value.toString().toLowerCase() === 'false';
+    }
 }

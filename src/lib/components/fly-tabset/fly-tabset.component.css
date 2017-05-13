@@ -1,0 +1,69 @@
+.fly-tabset {
+    margin-top: 10px;
+}
+.fly-tabset-content {
+    margin-bottom: 15px;
+}
+
+.fly-tabset .disabled .fly-tabset-label {
+    text-decoration: line-through;
+    color: #ff9937;
+}
+
+.nav-tabs > li, .nav > li {
+    cursor: pointer;
+}
+
+.fly-tabset .disabled .fly-tabset-label-required{
+    text-decoration: line-through;
+    color: #ff9937;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555;
+    font-weight: bold;
+    background-color: rgba(212, 231, 255, 0.21);
+}
+
+.nav-tabs {
+    border: 1px solid #cccccc;
+}
+
+.nav-tabs-blue .nav-tabs {
+    border-left: 6px solid #2196F3;
+    border-right: 6px solid #2196F3;
+}
+
+.nav-tabs-light-blue .nav-tabs {
+    border-left: 6px solid #53CDE4 ;
+    border-right: 6px solid #53CDE4 ;
+}
+
+.nav-tabs-orange .nav-tabs {
+    border-left: 6px solid #f0ad4e;
+    border-right: 6px solid #f0ad4e;
+}
+
+.nav-tabs-green .nav-tabs {
+    border-left: 6px solid #5cb85c;
+    border-right: 6px solid #5cb85c;
+}
+
+.nav-tabs-red .nav-tabs {
+    border-left: 6px solid #d9534f;
+    border-right: 6px solid #d9534f;
+}
+
+.nav-tabs-purple .nav-tabs {
+    border-left: 6px solid #663399;
+    border-right: 6px solid #663399;
+}
+
+.fly-tabset-label {
+    color: #555;
+}
+
+.fly-tabset-label-required {
+    color: #F44336;
+    font-size: 12px;
+}

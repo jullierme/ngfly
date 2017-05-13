@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FlyUtilService} from '../../services/fly-util.service';
 import {FlyColspanInterface} from '../fly-colspan.interface';
 
@@ -6,12 +6,11 @@ import {FlyColspanInterface} from '../fly-colspan.interface';
     selector: 'fly-legend',
     templateUrl: './fly-legend.component.html',
     styleUrls: ['./fly-legend.component.css'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    encapsulation: ViewEncapsulation.None
 })
 export class FlyLegendComponent implements OnInit, FlyColspanInterface {
 
-    @Input() title: string;
+    @Input() heading: string;
     @Input() iconClass: string;
     @Input() colspan: string;
 
