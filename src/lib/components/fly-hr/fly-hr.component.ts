@@ -11,7 +11,7 @@ import {FlyColspanInterface} from '../fly-colspan.interface';
 })
 export class FlyHrComponent implements OnInit, FlyColspanInterface {
 
-    @Input() title: string;
+    @Input() heading: string;
     @Input() iconClass: string;
     @Input() colspan: string;
 

@@ -1,4 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+    AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit,
+    ViewEncapsulation
+} from '@angular/core';
 import {FlyColspanInterface} from '../fly-colspan.interface';
 
 @Component({
@@ -7,15 +10,34 @@ import {FlyColspanInterface} from '../fly-colspan.interface';
     styleUrls: ['./fly-input-text.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class FlyInputTextComponent implements OnInit, FlyColspanInterface {
+export class FlyInputTextComponent implements OnInit, AfterViewInit,
+    AfterContentInit, AfterContentChecked, AfterViewChecked, FlyColspanInterface {
 
     constructor() {
+
+    }
+
+    ngAfterViewInit() {
+        console.log('1 ngAfterViewInit');
+    }
+
+    ngAfterContentInit() {
+        console.log('2 ngAfterContentInit');
+    }
+
+    ngAfterContentChecked() {
+        console.log('3 ngAfterContentChecked');
+    }
+
+    ngAfterViewChecked() {
+        console.log('4 ngAfterViewChecked');
     }
 
     ngOnInit() {
+        console.log('criou input text');
     }
 
-    defineClassColspan() {
+    defineClassColspan(): void {
         /*nothing yet*/
     }
 }
