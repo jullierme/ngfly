@@ -1,6 +1,6 @@
 import {
     AfterContentInit,
-    Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
+    Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList,
     ViewEncapsulation
 } from '@angular/core';
 import {FlyTabComponent} from './fly-tab/fly-tab.component';
@@ -29,7 +29,9 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
     @Input() colspan: number;
     private _selectedIndex: number;
 
-    @Output() public select: EventEmitter<any> = new EventEmitter();
+    @Output() selectedIndexChange = new EventEmitter<number>();
+
+    @Output() public select: EventEmitter<FlyTabComponent> = new EventEmitter();
 
     private classColor: string;
     private classColspan: string;
@@ -51,40 +53,30 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
     }
 
     ngAfterContentInit() {
-        let activeTabs = this.tabs.filter((tab) => tab.active);
-
-        // if there is no active tab set, activate the first
-        if (activeTabs.length === 0) {
-            this.selectTab(this.tabs.first);
-            this._selectedIndex = 0;
-        }
-
-        this.setDefaultValuesOnTab();
+        /*Preventing the exception ExpressionChangedAfterItHasBeenCheckedError*/
+        setTimeout(()=>{
+            if (this._selectedIndex > 0) {
+                this.selectTab(this.tabs.toArray()[this._selectedIndex]);
+            } else {
+                this.selectTab(this.tabs.first);
+            }
+        }, 1);
     }
 
-
-    forceSetSelectedIndex(tab: FlyTabComponent) {
-        this._selectedIndex = this.tabs.toArray().indexOf(tab);
-    }
-
-    setDefaultValuesOnTab() {
-        let tabsArray = this.tabs.toArray();
-
-        for (let i = 0, y = tabsArray.length; i < y; i++) {
-            tabsArray[i].flyTabsetInstance = this;
-        }
-    }
-
-    private selectTab(tab: FlyTabComponent) {
+    public selectTab(tab: FlyTabComponent, emitEvent:boolean = true): void {
         if (this.flyUtilService.isTrue(tab.disabled)) {
             return;
         }
         // deactivate all tabs
         this.tabs.toArray().forEach(tabInstance => tabInstance.active = false);
-
         this._selectedIndex = this.tabs.toArray().indexOf(tab);
 
+        if(emitEvent) {
+            this.selectedIndexChange.emit(this._selectedIndex);
+        }
+
         tab.active = true;
+        tab.lazy = false;
 
         this.select.emit(tab);
     }
@@ -97,23 +89,8 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
     public set selectedIndex(index) {
         if (this.tabs && this.tabs.length > index) {
             this.selectTab(this.tabs.toArray()[index]);
+        } else if (index) {
+            this._selectedIndex = index;
         }
     }
-
-    /*
-     selectTab(index: number) {
-     this._selectTab(this.tabs.toArray()[index]);
-     }
-
-     disableTab(index: number) {
-     this.tabs.toArray()[index].disabled = true;
-     }
-
-     enableTab(index: number) {
-     this.tabs.toArray()[index].disabled = false;
-     }
-
-     getTabs(): QueryList<FlyTabComponent> {
-     return this.tabs;
-     }*/
 }
