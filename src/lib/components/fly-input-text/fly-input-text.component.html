@@ -1,3 +1,39 @@
-<p>
-  fly-input-text works!
-</p>
+<div class="fly-input-text"
+     [ngClass]="classColspan">
+    <div class="form-group"
+         [ngClass]="{ 'has-error': inputField.touched && !inputField.valid }">
+        <label [attr.for]="id"
+               class="control-label"
+               *ngIf="hideLabel !== false && label">
+            {{label}}
+            <i class="fly-input-label-required fa fa-asterisk"
+               *ngIf="required"></i>
+            <span *ngIf="requiredConditional">
+                (<i class="fly-input-label-required fa fa-asterisk"></i>)
+            </span>
+        </label>
+        <input type="text"
+               class="form-control input-sm"
+               #inputField="ngModel"
+               #inputHtml
+               [id]="id"
+               [name]="id"
+               [attr.aria-label]="label"
+               [maxLength]="maxlength"
+               [minLength]="minlength"
+               [required]="required"
+               [placeholder]="placeholder"
+               [disabled]="disabled"
+               [readonly]="readonly"
+               [pattern]="pattern"
+               [(ngModel)]="value"
+               (ngModelChange)="_onChange($event)"
+               (blur)="_blur($event)"
+               (focus)="_focus($event)"
+               (keyup)="_keyup($event)"
+               (keydown)="_keydown($event)"
+               (change)="_change($event)"
+
+               />
+    </div>
+</div>

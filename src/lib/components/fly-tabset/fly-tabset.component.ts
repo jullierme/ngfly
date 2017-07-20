@@ -4,7 +4,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import {FlyTabComponent} from './fly-tab/fly-tab.component';
-import {FlyColspanInterface} from '../fly-colspan.interface';
+import {FlyColspanInterface} from '../base/interface/fly-colspan.interface';
 import {FlyUtilService} from '../../services/fly-util.service';
 
 @Component({
@@ -54,7 +54,7 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
 
     ngAfterContentInit() {
         /*Preventing the exception ExpressionChangedAfterItHasBeenCheckedError*/
-        setTimeout(()=>{
+        setTimeout(() => {
             if (this._selectedIndex > 0) {
                 this.selectTab(this.tabs.toArray()[this._selectedIndex]);
             } else {
@@ -63,17 +63,14 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
         }, 1);
     }
 
-    public selectTab(tab: FlyTabComponent, emitEvent:boolean = true): void {
+    public selectTab(tab: FlyTabComponent): void {
         if (this.flyUtilService.isTrue(tab.disabled)) {
             return;
         }
         // deactivate all tabs
         this.tabs.toArray().forEach(tabInstance => tabInstance.active = false);
         this._selectedIndex = this.tabs.toArray().indexOf(tab);
-
-        if(emitEvent) {
-            this.selectedIndexChange.emit(this._selectedIndex);
-        }
+        this.selectedIndexChange.emit(this._selectedIndex);
 
         tab.active = true;
         tab.lazy = false;
@@ -87,6 +84,10 @@ export class FlyTabsetComponent implements AfterContentInit, OnInit, FlyColspanI
     }
 
     public set selectedIndex(index) {
+        if (this._selectedIndex === index) {
+            return;
+        }
+
         if (this.tabs && this.tabs.length > index) {
             this.selectTab(this.tabs.toArray()[index]);
         } else if (index) {

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FlyUtilService} from '../../services/fly-util.service';
-import {FlyColspanInterface} from '../fly-colspan.interface';
+import {FlyColspanInterface} from '../base/interface/fly-colspan.interface';
 
 @Component({
     selector: 'fly-legend',

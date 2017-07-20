@@ -1,0 +1,22 @@
+.fly-input-label-required {
+    color: #FF0000;
+    font-size: 11px !important;
+}
+
+.fly-label-input-readonly {
+    font-weight: normal;
+    border: none;
+    font-size: 12px;
+    padding-left: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.fly-input-readonly {
+    border: none;
+    background-color: #FFF !important;
+    text-align: left !important;
+    padding-left: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
