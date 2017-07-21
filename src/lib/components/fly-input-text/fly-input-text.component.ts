@@ -14,7 +14,7 @@ let nextUniqueId = 0;
     providers: [FlyMakeProviderNgModel(FlyInputTextComponent)]
 })
 
-export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit{
+export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit {
     @Input() label: string;
     @Input() hideLabel: boolean;
     @Input() id: string = `fly-input-${nextUniqueId++}`;
@@ -26,7 +26,6 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
     @Input() maxlength: number = 1000;
     @Input() minlength: number;
     @Input() pattern: string;
-
 
     @Input() precision;
     @Input() scale;
@@ -46,23 +45,23 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
         super.ngOnInit();
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit() {
         this.configMask();
     }
 
     configMask() {
-        let _input = document.getElementById(this.id);//this.inputHtml.nativeElement;
+        let _input = $(this.inputHtml.nativeElement);
 
         if (this.maskValue) {
             _input.inputmask({
                 'mask': this.maskValue,
                 'onincomplete': function () {
-                   /* if (ngModelCtrl && angular.isFunction(ngModelCtrl.$setViewValue)) {
-                        ngModelCtrl.$setViewValue(null);
-                    }
+                    /* if (ngModelCtrl && angular.isFunction(ngModelCtrl.$setViewValue)) {
+                         ngModelCtrl.$setViewValue(null);
+                     }
 
-                    $setModelValue(this.$parent, null);
-                    ngFormCtrl[this.inputName].$setUntouched();*/
+                     $setModelValue(this.$parent, null);
+                     ngFormCtrl[this.inputName].$setUntouched();*/
                 },
                 'oncomplete': function () {
                     //validarCpfOuCnpf();
@@ -83,7 +82,7 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 positionCaretOnTab: this.selectOnTab === false
             });
 
-            if (parseInt(this.maxlength+'', 10) > 4) {
+            if (parseInt(this.maxlength + '', 10) > 4) {
                 this.maxlength = 4;
             }
         }
@@ -96,7 +95,7 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 positionCaretOnTab: this.selectOnTab === false
             });
 
-            if (parseInt(this.maxlength+'', 10) > 9) {
+            if (parseInt(this.maxlength + '', 10) > 9) {
                 this.maxlength = 9;
             }
         }
@@ -109,14 +108,9 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 positionCaretOnTab: this.selectOnTab === false
             });
 
-            if (parseInt(this.maxlength+'', 10) > 18) {
+            if (parseInt(this.maxlength + '', 10) > 18) {
                 this.maxlength = 18;
             }
-        }
-        else if (this.type === 'ip') {
-            _input.inputmask('ip', {
-                positionCaretOnTab: this.selectOnTab === false
-            });
         }
         else if (this.type === 'decimal') {
             this.type = 'numeric';
@@ -132,7 +126,7 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 positionCaretOnTab: this.selectOnTab === false,
                 digits: parseInt(this.precision, 10),
                 autoUnmask: true,
-                unmaskAsNumber:true,
+                unmaskAsNumber: true,
                 repeat: parseInt(this.scale, 10) - parseInt(this.precision, 10),
                 allowMinus: this.allowNegativeValue === true,
                 nojumps: true,
@@ -152,11 +146,11 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                     }
                 }
             });
-        } else if(this.pattern){
+        } else if (this.pattern) {
             _input.inputmask('Regex', {
                 regex: this.pattern,
                 positionCaretOnTab: this.selectOnTab === false,
-                isComplete: function(buffer, opts) {
+                isComplete: function (buffer, opts) {
                     return new RegExp(opts.regex).test(buffer.join(''));
                 }
             });
