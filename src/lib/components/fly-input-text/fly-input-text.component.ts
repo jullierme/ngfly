@@ -46,24 +46,28 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
     }
 
     ngAfterViewInit() {
-        this.configMask();
+       // this.configMask();
     }
 
-    configMask() {
+    /*configMask() {
         let _input = $(this.inputHtml.nativeElement);
+
+        let onComplete = () => {
+            this.ngModelChange.emit(this.inputHtml.nativeElement.value);
+        };
+
+        let onIncomplete = () => {
+            this.ngModelChange.emit(null);
+        };
 
         if (this.maskValue) {
             _input.inputmask({
                 'mask': this.maskValue,
                 'onincomplete': function () {
-                    /* if (ngModelCtrl && angular.isFunction(ngModelCtrl.$setViewValue)) {
-                         ngModelCtrl.$setViewValue(null);
-                     }
-
-                     $setModelValue(this.$parent, null);
-                     ngFormCtrl[this.inputName].$setUntouched();*/
+                    onIncomplete();
                 },
                 'oncomplete': function () {
+                    onComplete();
                     //validarCpfOuCnpf();
                 },
                 'clearIncomplete': true,
@@ -73,48 +77,41 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 'positionCaretOnTab': this.selectOnTab === false
             });
         }
-        else if (this.type === 'short') {
-            this.type = 'numeric';
+        else if (this.type === 'short' || this.type === 'integer' || this.type === 'long') {
+            let scale = 9;
+            let mask = '999999999';
 
-            _input.inputmask('integer', {
+            if (this.type === 'short'){
+                mask = '999999999';
+                scale = 4;
+            } else if (this.type === 'long') {
+                mask = '999999999999999999';
+                scale = 18;
+            }
+
+            _input.inputmask({
+                'mask': mask,
+                'onincomplete': function () {
+                    //onComplete();
+                },
+                'oncomplete': function () {
+                    //onComplete();
+                },
+                placeholder:'',
+                greedy: false,
                 rightAlign: false,
-                allowMinus: this.allowNegativeValue === true,
-                positionCaretOnTab: this.selectOnTab === false
+                numericInput: true,
+                'clearIncomplete': false,
+                'allowMinus': this.allowNegativeValue === true,
+                'positionCaretOnTab': this.selectOnTab === false
             });
 
-            if (parseInt(this.maxlength + '', 10) > 4) {
-                this.maxlength = 4;
+            if (parseInt(this.maxlength + '', 10) > scale) {
+                this.maxlength = scale;
             }
-        }
-        else if (this.type === 'integer') {
-            this.type = 'numeric';
 
-            _input.inputmask('integer', {
-                rightAlign: false,
-                allowMinus: this.allowNegativeValue === true,
-                positionCaretOnTab: this.selectOnTab === false
-            });
-
-            if (parseInt(this.maxlength + '', 10) > 9) {
-                this.maxlength = 9;
-            }
-        }
-        else if (this.type === 'long') {
-            this.type = 'numeric';
-
-            _input.inputmask('integer', {
-                rightAlign: false,
-                allowMinus: this.allowNegativeValue === true,
-                positionCaretOnTab: this.selectOnTab === false
-            });
-
-            if (parseInt(this.maxlength + '', 10) > 18) {
-                this.maxlength = 18;
-            }
         }
         else if (this.type === 'decimal') {
-            this.type = 'numeric';
-
             this.maxlength = null;
             this.minlength = null;
 
@@ -130,6 +127,7 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
                 repeat: parseInt(this.scale, 10) - parseInt(this.precision, 10),
                 allowMinus: this.allowNegativeValue === true,
                 nojumps: true,
+                numericInput: true,
                 onBeforeMask: function (maskedValue) {
                     if (maskedValue) {
                         return maskedValue.toString().replaceAll('.', ',');
@@ -156,4 +154,5 @@ export class FlyInputTextComponent extends FlyBaseInput implements AfterViewInit
             });
         }
     }
+    */
 }

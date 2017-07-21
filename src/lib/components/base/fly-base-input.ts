@@ -15,6 +15,7 @@ export abstract class FlyBaseInput extends FlyAbstractNgModel implements FlyCols
     @Output() keyup: EventEmitter<Object> = new EventEmitter<Object>();
     @Output() keydown: EventEmitter<Object> = new EventEmitter<Object>();
     @Output() change: EventEmitter<Object> = new EventEmitter<Object>();
+    @Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
 
     constructor(private _flyUtilService: FlyUtilService) {
         super();
@@ -48,5 +49,9 @@ export abstract class FlyBaseInput extends FlyAbstractNgModel implements FlyCols
 
     _change($event) {
         //this.change.next($event);
+    }
+
+    _input($event) {
+        console.log($event.target);
     }
 }

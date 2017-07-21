@@ -2,19 +2,19 @@ import {forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 export abstract class FlyAbstractNgModel implements ControlValueAccessor {
-    @Input() value: string = '';
-    /*_value: any = '';
+    //@Input() value: string = '';
+    _value: any = '';
 
     get value(): any {
         return this._value;
     };
 
     set value(v: any) {
-        if (v !== this._value) {
+        //if (v !== this._value) {
             this._value = v;
             this._onChange(v);
-        }
-    }*/
+       // }
+    }
 
     writeValue(value: any) {
         this.value = value;
