@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'fly-alert-ok',
@@ -8,8 +7,7 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 })
 export class FlyAlertOkComponent implements OnInit {
 
-    constructor(@Inject(MD_DIALOG_DATA) public data: any,
-                public dialogRef: MdDialogRef<FlyAlertOkComponent>) {
+    constructor() {
     }
 
     ngOnInit() {
